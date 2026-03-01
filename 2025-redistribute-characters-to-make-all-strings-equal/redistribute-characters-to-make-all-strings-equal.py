@@ -1,0 +1,16 @@
+class Solution:
+    def makeEqual(self, words):
+        from collections import Counter
+        
+        total_count = Counter()
+        
+        for word in words:
+            total_count.update(word)
+        
+        n = len(words)
+        
+        for count in total_count.values():
+            if count % n != 0:
+                return False
+        
+        return True

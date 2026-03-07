@@ -6,7 +6,7 @@ class Solution:
         alt1 = ""
         alt2 = ""
         
-        for i in range(2 * n):
+        for i in range(len(s)):
             if i % 2 == 0:
                 alt1 += "0"
                 alt2 += "1"
@@ -14,25 +14,26 @@ class Solution:
                 alt1 += "1"
                 alt2 += "0"
         
-        res = float('inf')
         diff1 = 0
         diff2 = 0
-        left = 0
+        res = n
         
-        for right in range(2 * n):
-            if s[right] != alt1[right]:
+        l = 0
+        
+        for r in range(len(s)):
+            if s[r] != alt1[r]:
                 diff1 += 1
-            if s[right] != alt2[right]:
+            if s[r] != alt2[r]:
                 diff2 += 1
             
-            if right - left + 1 > n:
-                if s[left] != alt1[left]:
+            if r - l + 1 > n:
+                if s[l] != alt1[l]:
                     diff1 -= 1
-                if s[left] != alt2[left]:
+                if s[l] != alt2[l]:
                     diff2 -= 1
-                left += 1
+                l += 1
             
-            if right - left + 1 == n:
+            if r - l + 1 == n:
                 res = min(res, diff1, diff2)
         
         return res

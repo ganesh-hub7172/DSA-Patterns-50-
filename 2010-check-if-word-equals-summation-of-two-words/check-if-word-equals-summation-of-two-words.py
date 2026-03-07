@@ -1,10 +1,10 @@
 class Solution:
     def isSumEqual(self, firstWord, secondWord, targetWord):
         
-        def word_to_number(word):
-            num_str = ""
+        def getValue(word):
+            num = ""
             for ch in word:
-                num_str += str(ord(ch) - ord('a'))
-            return int(num_str)
+                num += str(ord(ch) - ord('a'))
+            return int(num)
         
-        return word_to_number(firstWord) + word_to_number(secondWord) == word_to_number(targetWord)
+        return getValue(firstWord) + getValue(secondWord) == getValue(targetWord)
